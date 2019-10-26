@@ -21,6 +21,7 @@
             justify="center"
         >
           <div class="text-center slide-font-size pa-4 cloud">
+            <img v-if="slide.image" :src="`/img/${slide.image}`" alt="ImageView" width="100%">
             <div class="break">{{slide.text}}</div>
             <div v-if="slides.length - 1 === i">
               <v-btn class="pr-8 pl-8 mt-6" outlined>Start Level!</v-btn>
