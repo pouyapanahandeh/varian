@@ -88,11 +88,9 @@ export default {
 			const restart = $('.restart');
 
 			msg.show("blind", function () {
-				msgTitle.show("bounce", "slow", function () {
-					msgText.show("slide", function () {
-						restart.show("fade");
-					});
-				});
+				msgTitle.show("bounce");
+				msgText.show("slide");
+				restart.show("fade");
 			});
 		},
 		makeGuess: function () {
@@ -126,7 +124,6 @@ export default {
 						this.wrongGuesses.push(this.inputLetter);
 
 						if (this.wrongGuesses.length === 10) {
-							debugger
 							this.lose();
 						} else {
 							this.playSound('bad');
