@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import JSONLevels from '@/assets/levels.json';
 
 Vue.use(Vuex);
 
@@ -13,7 +12,6 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_LEVELS: function (state, levels) {
-
       state.levels = levels;
     },
     SET_PLAYER_SCORE: function(state, score) {
@@ -31,7 +29,14 @@ export default new Vuex.Store({
       commit('INC_LEVEL');
     },
     parseLevels: async function({commit}) {
+      const JSONLevels = require('../assets/levels');
       commit('SET_LEVELS', JSONLevels);
+    }
+  },
+  getters: {
+    getSlidesForLevel: (state) => (realmId, levelId) => {
+      const level = state.levels.find(level => +level.realm === +realmId && +level.level === +levelId);
+      return level ? level.slides : [];
     }
   }
 })

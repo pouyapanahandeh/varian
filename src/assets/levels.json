@@ -6,15 +6,15 @@
     "slides": [
       {
         "color": "red",
-        "text": "ok1"
+        "text": "realm1 level1 slide1"
       },
       {
         "color": "blue",
-        "text": "ok2"
+        "text": "realm1 level1 slide2"
       },
       {
         "color": "green",
-        "text": "ok3"
+        "text": "realm1 level1 slide3"
       }
     ]
   },
@@ -25,15 +25,15 @@
     "slides": [
       {
         "color": "red",
-        "text": "ok1"
+        "text": "realm2 level1 slide1"
       },
       {
         "color": "blue",
-        "text": "ok2"
+        "text": "realm2 level1 slide2"
       },
       {
         "color": "green",
-        "text": "ok3"
+        "text": "realm2 level1 slide3"
       }
     ]
   }

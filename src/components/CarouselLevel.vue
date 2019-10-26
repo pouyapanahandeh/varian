@@ -1,0 +1,57 @@
+<template>
+  <v-carousel
+      :show-arrows="true"
+      height="100%"
+      v-model="currentSlide"
+  >
+    <v-carousel-item
+        v-for="(slide, i) in slides"
+        :key="i"
+    >
+      <v-sheet
+          :color="slide.color"
+          height="100%"
+          tile
+          class="pl-4 pr-4"
+      >
+        <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+        >
+          <div class="text-center display-2">
+            {{slide.text}}
+            <div v-if="slides.length - 1 === i">
+              <v-btn class="pr-8 pl-8" outlined>Start Level!</v-btn>
+            </div>
+          </div>
+        </v-row>
+      </v-sheet>
+    </v-carousel-item>
+  </v-carousel>
+</template>
+
+<script>
+export default {
+	name: 'CarouselLevel',
+  props: {
+		slides: {
+      required: true
+    }
+  },
+  watch: {
+		slides: function () {
+			this.currentSlide = 0;
+    }
+  },
+  data: function () {
+		return {
+			currentSlide: 0
+    }
+  }
+};
+</script>
+
+<style scoped>
+
+</style>
