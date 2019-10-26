@@ -41,6 +41,10 @@ export default new Vuex.Store({
     getTypeForLevel: (state) => (realmId, levelId) => {
       const level = state.levels.find(level => +level.realm === +realmId && +level.level === +levelId);
       return level && level.type || '';
+    },
+    getWordList: (state) => (realmId, levelId) => {
+      const level = state.levels.find(level => +level.realm === +realmId && +level.level === +levelId);
+      return level ? level.wordlist : [];
     }
   }
 })
