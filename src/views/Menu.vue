@@ -3,7 +3,7 @@
     
     <v-container align="center" justify-center>
       <v-row justify="center">
-        
+        <!-- image we put -->
       </v-row>
       <v-row justify="center">
         <v-col class="text-center display-2">
