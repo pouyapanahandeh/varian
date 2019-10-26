@@ -1,0 +1,40 @@
+[
+  {
+    "level": "1",
+    "realm": "1",
+    "type": "letter",
+    "slides": [
+      {
+        "color": "red",
+        "text": "realm1 level1 slide1"
+      },
+      {
+        "color": "blue",
+        "text": "realm1 level1 slide2"
+      },
+      {
+        "color": "green",
+        "text": "realm1 level1 slide3"
+      }
+    ]
+  },
+  {
+    "level": "1",
+    "realm": "2",
+    "type": "word",
+    "slides": [
+      {
+        "color": "red",
+        "text": "realm2 level1 slide1"
+      },
+      {
+        "color": "blue",
+        "text": "realm2 level1 slide2"
+      },
+      {
+        "color": "green",
+        "text": "realm2 level1 slide3"
+      }
+    ]
+  }
+]
