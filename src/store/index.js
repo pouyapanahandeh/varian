@@ -37,6 +37,10 @@ export default new Vuex.Store({
     getSlidesForLevel: (state) => (realmId, levelId) => {
       const level = state.levels.find(level => +level.realm === +realmId && +level.level === +levelId);
       return level ? level.slides : [];
+    },
+    getTypeForLevel: (state) => (realmId, levelId) => {
+      const level = state.levels.find(level => +level.realm === +realmId && +level.level === +levelId);
+      return level && level.type || '';
     }
   }
 })
