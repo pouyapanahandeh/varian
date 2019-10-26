@@ -14,6 +14,9 @@ export default {
   components: {
     IndexPage,
   },
+  mounted: function () {
+    this.$store.dispatch('parseLevels');
+  },
   data: () => ({
     //
   }),

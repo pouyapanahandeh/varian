@@ -1,0 +1,40 @@
+[
+  {
+    "level": "1",
+    "realm": "1",
+    "type": "letter",
+    "slides": [
+      {
+        "color": "red",
+        "text": "ok1"
+      },
+      {
+        "color": "blue",
+        "text": "ok2"
+      },
+      {
+        "color": "green",
+        "text": "ok3"
+      }
+    ]
+  },
+  {
+    "level": "1",
+    "realm": "2",
+    "type": "word",
+    "slides": [
+      {
+        "color": "red",
+        "text": "ok1"
+      },
+      {
+        "color": "blue",
+        "text": "ok2"
+      },
+      {
+        "color": "green",
+        "text": "ok3"
+      }
+    ]
+  }
+]
