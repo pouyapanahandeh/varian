@@ -4,7 +4,7 @@
       <div id="player" class="actor player pt-4">
         <img class="sprite" src="/img/radioboy.png" alt="radioboy"/>
       </div>
-      <div id="enemie" class="actor enemie">
+      <div v-show="monsterHP > 0" id="enemie" class="actor enemie">
         <p id="enemie-hp" class="hp">{{ monsterHP }}</p>
         <img class="sprite" src="/img/pizduk.png" alt="pizdushan"/>
       </div>
@@ -13,24 +13,34 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
 	name: 'GameScene',
 	props: {
 		gameEvent: {
 			type: String,
 			required: true
+		},
+		multi: {
+			type: Number,
+			required: true
 		}
 	},
-	mounted: function () {
-    this.monsterHP = 200;
-    this.damageAmount = this.monsterHP / 2;
+	computed: {
+		...mapGetters(['getWordList'])
 	},
-  data: function () {
+	mounted: function () {
+		const wordList = this.getWordList(this.$route.params.realm_id, this.$route.params.level_id);
+		this.monsterHP = Math.floor(Math.random() * 100) + 100;
+		this.damageAmount = (this.monsterHP / wordList.length) + 3;
+	},
+	data: function () {
 		return {
 			monsterHP: 0,
-      damageAmount: 0
-    }
-  },
+			damageAmount: 0
+		};
+	},
 	watch: {
 		gameEvent: function (newValue) {
 			switch (newValue) {
@@ -46,7 +56,7 @@ export default {
 	methods: {
 		dealDamage: function () {
 			const monster = $('#enemie')[0];
-			this.monsterHP -= this.damageAmount;
+			this.monsterHP -= Math.floor(this.damageAmount) * this.multi;
 
 			monster.style.animation = 'take-damage 2s';
 			setTimeout(() => monster.style.animation = '', 2000);

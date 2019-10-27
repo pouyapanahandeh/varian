@@ -14,7 +14,8 @@
         <input type="text" v-model="inputLetter" class="guessLetter" maxlength="1" placeholder="Enter a letter . . ."
                :class="{disabled: isGameOver}"/>
       </label>
-      <button @click.prevent="makeGuess" type="submit" class="guessButton">Guess</button>
+      <button v-if="!isGameOver" @click.prevent="makeGuess" type="submit" class="guessButton">Guess</button>
+      <button v-else :to="{name: 'levels'}" class="guessButton">Next Game!</button>
     </form>
     <div class="wrong">
       <ul class="wrongLetters">
@@ -41,9 +42,9 @@ export default {
 		this.pickedWordLetters = wordList[Math.floor(Math.random() * this.getWordList.length)].split('');
 		this._setupSounds();
 	},
-  computed: {
+	computed: {
 		...mapGetters(['getWordList'])
-  },
+	},
 	data: function () {
 		return {
 			wordList: [],
@@ -109,14 +110,14 @@ export default {
 					if (indecesOfGuessed.length) {
 						this.indecesOfLettersGuessed.push(...indecesOfGuessed);
 						this.playSound('good');
-						this.$emit('updateEvent', 'playerGuessed');
+						this.$emit('updateEvent', { type: 'playerGuessed', multi: indecesOfGuessed.length });
 
 						if (this.indecesOfLettersGuessed.length === this.pickedWordLetters.length)
 							this.win();
 
 					} else {
 						this.wrongGuesses.push(this.inputLetter);
-    			  this.playSound('bad');
+						this.playSound('bad');
 					}
 				}
 			}
@@ -281,7 +282,6 @@ export default {
     display: none;
     padding: 20px;
     position: absolute;
-    top: 110px;
     left: 0;
     right: 0;
     bottom: 0;
