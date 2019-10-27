@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Helper/>
+    <Helper @updateEvent="$emit('updateEvent', { type: 'playerGuessed', multi: 1 })"/>
   </div>
 </template>
 
@@ -9,7 +9,7 @@ import Helper from './Helper';
 
 export default {
 	name: "WordGame",
-	components: { Helper }
+	components: { Helper },
 };
 </script>
 
