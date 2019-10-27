@@ -17,6 +17,7 @@
         "text": "When the lump of cells is in your head it’s called a brain tumor.\n Why do cells get ill? \n No one knows. \n Do you do something wrong to get tumor? \n No, it is not your fault at all. "
       },
       {
+        "image": "cells.png",
         "color": "orange",
         "text": "Can it be destroyed and go away? \n Absolutely, yes. \n How? \n You will know after you finish your challenges."
       }
@@ -27,6 +28,36 @@
       "brain",
       "ill",
       "monster"
+    ]
+  },
+  {
+    "level": "2",
+    "realm": "1",
+    "type": "word",
+    "slides": [
+      {
+        "color": "#186782",
+        "text": "The monsters, peter is fighting against are parts of the tumor. \n So, what is this tumor?"
+      },
+      {
+        "color": "orange",
+        "text": "Body and brain are made up of billions of building blocks are called cells, but sometimes they get ill and start to grow when they should not. They can then make a lump, and this is called a tumor. "
+      },
+      {
+        "color": "green",
+        "text": "When the lump of cells is in your head it’s called a brain tumor.\n Why do cells get ill? \n No one knows. \n Do you do something wrong to get tumor? \n No, it is not your fault at all. "
+      },
+      {
+        "image": "cells.png",
+        "color": "orange",
+        "text": "Can it be destroyed and go away? \n Absolutely, yes. \n How? \n You will know after you finish your challenges."
+      }
+    ],
+    "wordlist": [
+      "tumor",
+      "cells",
+      "brain",
+      "ill"
     ]
   },
   {

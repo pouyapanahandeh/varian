@@ -4,6 +4,7 @@ import IndexPage from '../views/IndexPage';
 import Menu from '../views/Menu';
 import LevelSlides from '../views/LevelSlides';
 import Game from '../views/Game';
+import Levels from '../views/Levels';
 
 Vue.use(VueRouter);
 
@@ -25,6 +26,11 @@ const routes = [
   {
     path: '/realm/:realm_id/level/:level_id',
     component: Game
+  },
+  {
+    path: '/levels',
+    name: 'levels',
+    component: Levels
   },
   {
     path: '*',

@@ -21,7 +21,7 @@
             align="center"
             justify="center"
         >
-          <div class="text-center display-1">
+          <div class="text-center display-1 break">
             {{message.text}}
             <img v-if="message.image" :src="`/img/${message.image}`" alt="ImageView" height="600px">
             <div v-if="i === 0">
@@ -80,7 +80,7 @@ export default {
 			},
 			{
 				"color": "orange",
-				"text": "Each day yyyy had to fight against different monster by completing different challenges. \nSo yyyy, do you want to fight these monsters? \nStart the game "
+				"text": "Each day yyyy had to fight against different monster by completing different challenges.\n\nSo yyyy, do you want to fight these monsters? \nStart the game\n"
 			}
 		],
 		currentSlide: 0,
@@ -116,5 +116,9 @@ export default {
     .v-input, .v-btn {
       pointer-events: auto;
     }
+  }
+
+  .break {
+    white-space: pre-line;
   }
 </style>

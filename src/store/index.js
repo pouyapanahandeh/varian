@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     levels: [],
-    playerLevel: 1,
+    playerRank: 1,
     playerScore: 1,
     playerName: "",
     playerGender: ''
@@ -18,8 +18,8 @@ export default new Vuex.Store({
     SET_PLAYER_SCORE: function(state, score) {
       state.playerScore = score;
     },
-    INC_LEVEL: function (state) {
-      state.playerLevel++;
+    INC_RANK: function (state) {
+      state.playerRank++;
     },
     SET_PLAYER: function (state, player) {
       state.playerName = player.name;
@@ -31,7 +31,7 @@ export default new Vuex.Store({
       commit('SET_PLAYER_SCORE', state.playerScore + scoreAmount);
     },
     increasePlayerLevel: function ({commit}) {
-      commit('INC_LEVEL');
+      commit('INC_RANK');
     },
     parseLevels: async function({commit}) {
       const JSONLevels = require('../assets/levels');
@@ -55,6 +55,9 @@ export default new Vuex.Store({
       return level ? level.wordlist : [];
     },
     getName: state => state.playerName,
-    getGender: state => state.playerGender
+    getGender: state => state.playerGender,
+    getLevels: state => state.levels,
+    getRank: state => state.playerRank,
+    getScore: state => state.playerScore
   }
 })

@@ -71,7 +71,7 @@ export default {
 	},
 	mounted() {
 		this.words = this.getWordList(this.$route.params.realm_id, this.$route.params.level_id);
-		this.size = Math.max(...this.words.map(word => word.length));
+		this.size = Math.max(...this.words.map(word => word.length)) + 2;
 		this.rebuildGrid();
 	},
 	computed: {
