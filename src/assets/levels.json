@@ -17,7 +17,6 @@
         "text": "When the lump of cells is in your head it’s called a brain tumor.\n Why do cells get ill? \n No one knows. \n Do you do something wrong to get tumor? \n No, it is not your fault at all. "
       },
       {
-        "image": "cells.png",
         "color": "orange",
         "text": "Can it be destroyed and go away? \n Absolutely, yes. \n How? \n You will know after you finish your challenges."
       }
@@ -37,20 +36,7 @@
     "slides": [
       {
         "color": "#186782",
-        "text": "The monsters, peter is fighting against are parts of the tumor. \n So, what is this tumor?"
-      },
-      {
-        "color": "orange",
-        "text": "Body and brain are made up of billions of building blocks are called cells, but sometimes they get ill and start to grow when they should not. They can then make a lump, and this is called a tumor. "
-      },
-      {
-        "color": "green",
-        "text": "When the lump of cells is in your head it’s called a brain tumor.\n Why do cells get ill? \n No one knows. \n Do you do something wrong to get tumor? \n No, it is not your fault at all. "
-      },
-      {
-        "image": "cells.png",
-        "color": "orange",
-        "text": "Can it be destroyed and go away? \n Absolutely, yes. \n How? \n You will know after you finish your challenges."
+        "text": "WORD FINDER GAME BEGINS!"
       }
     ],
     "wordlist": [
@@ -80,6 +66,36 @@
       {
         "color": "blue",
         "text": "Is the radiotherapy painful? \n No it is not, it is painless process. \n How long it takes? \n It take few minutes."
+      }
+    ],
+    "wordlist": [
+      "machine",
+      "flash"
+    ]
+  },
+  {
+    "level": "1",
+    "realm": "2",
+    "type": "word",
+    "slides": [
+      {
+        "color": "green",
+        "text": "WORD FINDER GAME BEGINS!"
+      }
+    ],
+    "wordlist": [
+      "machine",
+      "flash"
+    ]
+  },
+  {
+    "level": "2",
+    "realm": "3",
+    "type": "word",
+    "slides": [
+      {
+        "color": "green",
+        "text": "WORD FINDER GAME BEGINS!"
       }
     ],
     "wordlist": [

@@ -21,6 +21,7 @@
             justify="center"
         >
           <div class="text-center slide-font-size pa-4 cloud">
+            <div>Day {{$route.params.realm_id}}</div>
             <img v-if="slide.image" :src="`/img/${slide.image}`" alt="ImageView" width="80%">
             <div class="break">{{slide.text}}</div>
             <div v-if="slides.length - 1 === i">

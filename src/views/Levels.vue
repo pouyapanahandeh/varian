@@ -8,7 +8,7 @@
     <div class="d-flex flex-column justify-content-between">
       <div v-for="(realm, counter) in groupedLevels" class="realm" :class="[+counter === 1 ? 'beginner' : 'advanced', {'bg-white transp no-pointer': +counter === 3}]">
 
-        <div class="display-1 w-100 text-center bg-white transp">Realm #{{counter + (+counter === 2  ? ` (${timeLeft || ''})` : '')}}</div>
+        <div class="display-1 w-100 text-center bg-white transp">Realm #{{counter + (+counter === 3  ? ` (${timeLeft || ''})` : '')}}</div>
 
         <div class="d-flex flex-row flex-wrap">
           <div v-for="level in realm" class="p-4">

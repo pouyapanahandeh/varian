@@ -23,7 +23,7 @@
         </div>
 
         <div class="text-center w-100">
-          <button v-if="isGameOver" :to="{name: 'levels'}" class="guessButton">Next Game!</button>
+          <button v-if="isGameOver" @click.prevent="$router.push({ name: 'levels' })" class="guessButton">Next Game!</button>
           <div v-if="isGameOver" class="message">
             <h1 class="title">
               Congratulations you won!

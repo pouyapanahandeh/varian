@@ -1,5 +1,5 @@
 <template>
-  <div class="hangman">
+  <div class="hangman" :key="key">
     <div class="guess">
       <ul class="word pa-0">
         <li v-for="(letter, i) in pickedWordLetters" class="letter"
@@ -15,7 +15,7 @@
                :class="{disabled: isGameOver}"/>
       </label>
       <button v-if="!isGameOver" @click.prevent="makeGuess" type="submit" class="guessButton">Guess</button>
-      <a v-else @click.prevent="$router.push({name: 'levels'})" class="guessButton d-block">Next Game!</a>
+      <v-btn v-else @click="goToNext()" class="btn bg-primary text-white btn-primary">Next Game!</v-btn>
     </form>
     <div class="wrong">
       <ul class="wrongLetters">
@@ -39,7 +39,7 @@ export default {
 	name: 'LetterGame',
 	mounted: function () {
 		const wordList = this.getWordList(this.$route.params.realm_id, this.$route.params.level_id);
-		this.pickedWordLetters = wordList[Math.floor(Math.random() * this.getWordList.length)].split('');
+		this.pickedWordLetters = wordList[Math.floor(Math.random() * this.getWordList.length)].toLowerCase().split('');
 		this._setupSounds();
 	},
 	computed: {
@@ -47,6 +47,7 @@ export default {
 	},
 	data: function () {
 		return {
+			key: 0,
 			wordList: [],
 			pickedWordLetters: [],
 			sounds: {
@@ -68,6 +69,10 @@ export default {
 		};
 	},
 	methods: {
+		goToNext: function () {
+			this.$router.push({path: `/slides/realm/${this.$route.params.realm_id}/level/2`});
+			this.key++;
+    },
 		win: function () {
 			this.endMsgs.title = `Congratulations you did it!`;
 			this.playSound('win');
@@ -87,6 +92,8 @@ export default {
 			});
 		},
 		makeGuess: function () {
+			this.inputLetter = this.inputLetter.toLowerCase();
+
 			if (this.inputLetter.match(/[a-zA-Z]/) && this.inputLetter.length === 1) {
 				if (this.wrongGuesses.includes(this.inputLetter) || this.correctGuesses.includes(this.inputLetter)) {
 					this.inputLetter = '';
