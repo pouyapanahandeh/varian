@@ -1,5 +1,7 @@
 <template>
   <div v-if="getTypeForLevel(this.realmNumber, this.levelNumber)">
+    <GameScene></GameScene>
+
     <WordGame v-if="getTypeForLevel(this.realmNumber, this.levelNumber) === 'word'"></WordGame>
     <LetterGame v-else-if="getTypeForLevel(this.realmNumber, this.levelNumber) === 'letter'"></LetterGame>
   </div>
@@ -8,11 +10,13 @@
 <script>
 import WordGame from '../components/WordGame';
 import LetterGame from '../components/LetterGame';
+import GameScene from '../components/GameScene';
+
 import { mapGetters } from 'vuex';
 
 export default {
 	name: 'Game',
-	components: { LetterGame, WordGame },
+	components: { LetterGame, WordGame, GameScene },
 	mounted: function () {
 		this.setIds(+this.$route.params.realm_id, +this.$route.params.level_id);
 	},
