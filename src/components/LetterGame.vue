@@ -69,8 +69,7 @@ export default {
 	},
 	methods: {
 		win: function () {
-			this.endMsgs.title = `Ayy congratulations it's a celebration!`;
-			this.endMsgs.text = `Pls don't ban!`;
+			this.endMsgs.title = `Congratulations you did it!`;
 			this.playSound('win');
 			this.showMsg();
 			this.isGameOver = true;

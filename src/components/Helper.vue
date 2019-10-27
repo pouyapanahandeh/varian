@@ -22,6 +22,16 @@
           </div>
         </div>
 
+        <div class="text-center w-100">
+          <button v-if="isGameOver" :to="{name: 'levels'}" class="guessButton">Next Game!</button>
+          <div v-if="isGameOver" class="message">
+            <h1 class="title">
+              Congratulations you won!
+            </h1>
+          </div>
+        </div>
+
+
         <div class="col-12">
           <h2 class="text-center">Words</h2>
           <div class="words text-center">
@@ -56,6 +66,7 @@ export default {
 				start: undefined,
 				end: undefined,
 			},
+			isGameOver: false
 		};
 	},
 	mounted() {
@@ -215,7 +226,12 @@ export default {
 
 						if (this.usedWords.indexOf(this.guessedWord) !== -1) {
 							this.foundWords.push(this.guessedWord);
+							this.$emit('updateEvent', { type: 'playerGuessed', multi: 1 });
 							this.foundTiles.push(...this.guess);
+
+							if (this.foundWords.length === this.words.length) {
+								this.win();
+							}
 						}
 
 
@@ -345,6 +361,22 @@ export default {
 				}
 			}
 		},
+		win: function () {
+			this.isGameOver = true;
+			this.showMsg();
+		},
+		showMsg: function () {
+			const msg = $('.message');
+			const msgTitle = $('.message .title');
+
+			const soundWin = new Audio("https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/win.mp3");
+			soundWin.volume = .8;
+		  soundWin.play();
+
+			msg.show("blind", function () {
+				msgTitle.show("bounce");
+			});
+		}
 	},
 };
 </script>
@@ -415,4 +447,139 @@ export default {
       font-size: 1.5rem;
     }
   }
+
+  $blue: #53BDFF;
+  $green: #2EB933;
+  $drk-blue: darken($blue, 10%);
+
+  .settings-icon {
+    fill: #ccc;
+  }
+
+  .letter-tile {
+    padding: 100% 0 0;
+    cursor: pointer;
+
+    svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      line-height: 0;
+      width: 100%;
+      fill: #ccc;
+    }
+
+    transition: background ease-in 0.1s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &.letter-tile-selected {
+      background: rgba(0, 255, 255, 0.2);
+    }
+
+    &.letter-tile-found {
+      background: rgba(0, 255, 0, 0.2);
+    }
+
+    &.letter-tile-highlighted {
+      background: rgba(255, 255, 0, 0.2);
+    }
+  }
+
+  #wordsearch_grid {
+    min-width: calc(90vw - 50px);
+
+    @media screen and (min-width: 100vh) {
+      min-width: calc(90vh - 50px);
+    }
+
+    .col {
+      padding: 0;
+
+      &:not(:last-child) {
+        border-right-width: 0 !important;
+      }
+    }
+
+    .row {
+      &:not(:last-child) {
+        .col {
+          border-bottom-width: 0 !important;
+        }
+      }
+    }
+  }
+
+  .words {
+    .badge {
+      margin: 0 0.5em 0.5em 0;
+      font-size: 1.5rem;
+    }
+  }
+
+  $blue: #53BDFF;
+  $green: #2EB933;
+  $drk-blue: darken($blue, 10%);
+
+  .guessButton {
+    border: none;
+    font-size: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background: $blue;
+    color: white;
+    transition: .3s;
+    margin: 10px 0;
+    text-shadow: 1px 2px 0 $drk-blue;
+
+    &:hover {
+      background: $drk-blue;
+    }
+  }
+
+  .message {
+    display: none;
+    padding: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: darken($drk-blue, 10%);
+    z-index: 12402402;
+
+    h1 {
+      display: none;
+      color: white;
+      text-shadow: 1px 2px 0 #ccc;
+    }
+
+    .highlight {
+      color: yellow;
+      text-transform: capitalize;
+    }
+
+    .text {
+      color: white;
+      font-size: 30px;
+      display: none;
+
+      p {
+        color: white;
+      }
+
+      .highlight {
+        font-size: 40px;
+      }
+    }
+
+    .muted {
+      margin: 20px auto;
+      color: lighten($blue, 10%);
+    }
+  }
+
+
 </style>
