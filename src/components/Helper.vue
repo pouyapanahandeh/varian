@@ -23,7 +23,7 @@
         </div>
 
         <div class="text-center w-100">
-          <button v-if="isGameOver" :to="{name: 'levels'}" class="guessButton">Next Game!</button>
+          <button v-if="isGameOver" @click.prevent="$router.push({ name: 'levels' })" class="guessButton">Next Game!</button>
           <div v-if="isGameOver" class="message">
             <h1 class="title">
               Congratulations you won!
@@ -42,6 +42,31 @@
             >{{word}}</span>
           </div>
         </div>
+
+        <v-dialog
+            v-model="dialog"
+            max-width="290"
+        >
+          <v-card>
+            <v-card-title class="headline">SUCCESS!!!</v-card-title>
+
+            <v-card-text>
+              <div class="display-1 text-center">
+                Your score: 100 <br>
+                Your rank: 2 <br>
+                Choose your reward: <br>
+              </div>
+
+              <div class="d-flex justify-content-center flex-row mt-3">
+                <div class="border text-center p-4">Favourite video</div>
+                <div class="border text-center p-4">Favourite music</div>
+              </div>
+
+              <div class="text-center mt-3">Go for your next challenge (3)</div>
+              <v-btn :to="{name: 'levels'}" block class="mt-3 bg-primary text-white">Continue</v-btn>
+            </v-card-text>
+          </v-card>
+        </v-dialog>
       </div>
     </div>
   </div>
@@ -54,6 +79,7 @@ export default {
 	name: 'Helper',
 	data() {
 		return {
+			dialog: false,
 			debugEnabled: false,
 			size: 0,
 			words: [],
@@ -71,7 +97,7 @@ export default {
 	},
 	mounted() {
 		this.words = this.getWordList(this.$route.params.realm_id, this.$route.params.level_id);
-		this.size = Math.max(...this.words.map(word => word.length));
+		this.size = Math.max(...this.words.map(word => word.length)) + 2;
 		this.rebuildGrid();
 	},
 	computed: {
@@ -230,6 +256,7 @@ export default {
 							this.foundTiles.push(...this.guess);
 
 							if (this.foundWords.length === this.words.length) {
+								this.dialog = true;
 								this.win();
 							}
 						}

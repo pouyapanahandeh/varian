@@ -14,21 +14,23 @@
           :color="message.color"
           height="100%"
           tile
-          class="pl-4 pr-4"
+          class="pl-4 pr-4 cloud "
+          :class="{whitebg : i === 4}"
       >
         <v-row
-            class="fill-height"
+            class="h-100 d-flex flex-column justify-content-center"
             align="center"
             justify="center"
         >
-          <div class="text-center display-1">
+          <div class="text-center display-1 break" >
             {{message.text}}
             <img v-if="message.image" :src="`/img/${message.image}`" alt="ImageView" height="600px">
             <div v-if="i === 0">
+              <p>Your name!</p>
               <v-text-field v-model="playerName" label="Your hero name!" solo-inverted
                             class="mt-6 ml-4 mr-4 text--white"></v-text-field>
 
-              <p>You are?</p>
+              <p>You are a...</p>
               <div class="d-flex justify-content-center">
                 <v-radio-group v-model="playerGender" row>
                   <v-radio label="Boy" value="boy"></v-radio>
@@ -74,13 +76,13 @@ export default {
 				"text": "During his mission, yyyy needed to get into a special machine designed by zzzz doctor to flight to the space for 25 days in order to find the monsters and destroy them."
 			},
 			{
-				"color": "yellow",
+				"color": "blue",
 				"image": "arrowed.png",
 				"text": ""
 			},
 			{
 				"color": "orange",
-				"text": "Each day yyyy had to fight against different monster by completing different challenges. \nSo yyyy, do you want to fight these monsters? \nStart the game "
+				"text": "Each day yyyy had to fight against different monster by completing different challenges.\n\nSo yyyy, do you want to fight these monsters? \nStart the game\n"
 			}
 		],
 		currentSlide: 0,
@@ -92,7 +94,7 @@ export default {
 			if (this.currentSlide > 0 && this.currentSlide < this.messages.length - 1) {
 				this.currentSlide++;
 			} else if (this.currentSlide === this.messages.length - 1) {
-				this.$router.push({ name: 'menu' });
+				this.$router.push({ path: '/slides/realm/1/level/1' });
 			}
 		},
 		setPlayer: function () {
@@ -117,4 +119,19 @@ export default {
       pointer-events: auto;
     }
   }
+
+  .break {
+    white-space: pre-line;
+  }
+
+  .cloud {
+    background-image: url("/img/story-bg2.png");
+    background-size: 100% 100%;
+  }
+
+  .whitebg {
+    background-image: none !important;
+    background-color: whitesmoke;
+  }
+
 </style>

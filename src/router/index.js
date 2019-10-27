@@ -4,17 +4,18 @@ import IndexPage from '../views/IndexPage';
 import Menu from '../views/Menu';
 import LevelSlides from '../views/LevelSlides';
 import Game from '../views/Game';
+import Levels from '../views/Levels';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: '/index',
     name: 'index',
     component: IndexPage
   },
   {
-    path: '/menu',
+    path: '/',
     name: 'menu',
     component: Menu
   },
@@ -27,8 +28,9 @@ const routes = [
     component: Game
   },
   {
-    path: '*',
-    redirect: '/menu'
+    path: '/levels',
+    name: 'levels',
+    component: Levels
   }
 ];
 

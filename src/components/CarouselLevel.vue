@@ -13,18 +13,19 @@
           :color="slide.color"
           height="100%"
           tile
-          class="pl-4 pr-4"
+          class="pl-4 pr-4 cloud"
       >
         <v-row
             class="fill-height"
             align="center"
             justify="center"
         >
-          <div class="text-center slide-font-size pa-4 cloud">
-            <img v-if="slide.image" :src="`/img/${slide.image}`" alt="ImageView" width="100%">
+          <div class="text-center slide-font-size pa-4">
+            <div>Day {{$route.params.realm_id}}</div>
+            <img v-if="slide.image" :src="`/img/${slide.image}`" class="rot" alt="ImageView" width="80%">
             <div class="break">{{slide.text}}</div>
             <div v-if="slides.length - 1 === i">
-              <v-btn class="pr-8 pl-8 mt-6" outlined>Start Level!</v-btn>
+              <v-btn class="pr-8 pl-8 mt-6" :to="`/realm/${$route.params.realm_id}/level/${$route.params.level_id}`" outlined>Start Level!</v-btn>
             </div>
           </div>
         </v-row>
@@ -65,6 +66,16 @@ export default {
   }
 
   .slide-font-size {
-    font-size: 1.9rem;
+    font-size: 1.5rem;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  }
+
+  .cloud {
+    background-image: url("/img/story-bg1.png");
+    background-size: 100% 100%;
+
+  }
+  .rot {
+
   }
 </style>

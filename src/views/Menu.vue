@@ -1,16 +1,12 @@
 <template>
-  <v-container>
-    
+  <v-container class="menu-bg h-100">
+
     <v-container align="center" justify-center>
-      <v-row justify="center">
-        
-      </v-row>
-      <v-row justify="center">
+      <v-row justify="center" class="custom-m">
         <v-col class="text-center display-2">
-          <v-btn class="my-2" block> New Game</v-btn>
-          <v-btn class="my-2" block> Continue</v-btn>
-          <v-btn class="my-2" block> Levels</v-btn>
-          <v-btn class="my-2" block> Unlocked</v-btn>
+          <v-btn class="my-2" to="/index" block>New game</v-btn>
+          <v-btn class="my-2" to="/slides/realm/2/level/1" block>Continue</v-btn>
+          <v-btn class="my-2" :to="{name: 'levels'}" block>Levels</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -24,5 +20,11 @@ export default {
 </script>
 
 <style scoped>
-
+  .menu-bg {
+    background-image: url("/img/menu.jpeg");
+    background-size: 100% 100%;
+  }
+  .custom-m {
+    margin-top: 10rem;
+  }
 </style>
