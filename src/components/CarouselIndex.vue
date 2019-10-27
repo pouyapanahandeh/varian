@@ -25,10 +25,11 @@
             {{message.text}}
             <img v-if="message.image" :src="`/img/${message.image}`" alt="ImageView" height="600px">
             <div v-if="i === 0">
+              <p>Your name!</p>
               <v-text-field v-model="playerName" label="Your hero name!" solo-inverted
                             class="mt-6 ml-4 mr-4 text--white"></v-text-field>
 
-              <p>You are?</p>
+              <p>You are a...</p>
               <div class="d-flex justify-content-center">
                 <v-radio-group v-model="playerGender" row>
                   <v-radio label="Boy" value="boy"></v-radio>
@@ -92,7 +93,7 @@ export default {
 			if (this.currentSlide > 0 && this.currentSlide < this.messages.length - 1) {
 				this.currentSlide++;
 			} else if (this.currentSlide === this.messages.length - 1) {
-				this.$router.push({ name: 'menu' });
+				this.$router.push({ path: '/slides/realm/1/level/1' });
 			}
 		},
 		setPlayer: function () {

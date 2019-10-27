@@ -10,12 +10,12 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: '/index',
     name: 'index',
     component: IndexPage
   },
   {
-    path: '/menu',
+    path: '/',
     name: 'menu',
     component: Menu
   },
@@ -31,10 +31,6 @@ const routes = [
     path: '/levels',
     name: 'levels',
     component: Levels
-  },
-  {
-    path: '*',
-    redirect: '/menu'
   }
 ];
 

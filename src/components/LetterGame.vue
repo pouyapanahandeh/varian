@@ -10,12 +10,12 @@
       </ul>
     </div>
     <form class="guessForm">
-      <label>
+      <label v-if="!isGameOver">
         <input type="text" v-model="inputLetter" class="guessLetter" maxlength="1" placeholder="Enter a letter . . ."
                :class="{disabled: isGameOver}"/>
       </label>
       <button v-if="!isGameOver" @click.prevent="makeGuess" type="submit" class="guessButton">Guess</button>
-      <button v-else :to="{name: 'levels'}" class="guessButton">Next Game!</button>
+      <a v-else @click.prevent="$router.push({name: 'levels'})" class="guessButton d-block">Next Game!</a>
     </form>
     <div class="wrong">
       <ul class="wrongLetters">

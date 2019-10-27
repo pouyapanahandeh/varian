@@ -7,7 +7,8 @@
       </v-row>
       <v-row justify="center">
         <v-col class="text-center display-2">
-          <v-btn class="my-2" to="/" block>New Game</v-btn>
+          <v-btn class="my-2" to="/index" block>New game</v-btn>
+          <v-btn class="my-2" to="/slides/realm/2/level/1" block>Continue</v-btn>
           <v-btn class="my-2" :to="{name: 'levels'}" block>Levels</v-btn>
           <v-btn class="my-2" block>Unlocked</v-btn>
         </v-col>

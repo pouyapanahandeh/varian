@@ -1,18 +1,22 @@
 <template>
-  <div>
+  <div class="h-100">
     <div class="display-3 w-100 text-center bg-primary pt-3 pb-3 text-light">Levels</div>
     <div class="bg-success text-light p-4 d-flex flex-row justify-content-around">
       <p class="mb-0">Your rank: {{ getRank }}</p>
       <p class="mb-0">Your score: {{ getScore }}</p>
     </div>
-    <div v-for="(realm, i) in groupedLevels" class="realm" :class="[+i === 1 ? 'beginner' : 'advanced']">
-      <div class="display-1 w-100 text-center bg-white transp">Realm #{{i}}</div>
+    <div class="d-flex flex-column justify-content-between">
+      <div v-for="(realm, i) in groupedLevels" class="realm" :class="[+i === 1 ? 'beginner' : 'advanced']">
+        <div class="display-1 w-100 text-center bg-white transp">Realm #{{i}}</div>
 
-      <div class="d-flex flex-row flex-wrap">
-        <div v-for="level in realm" class="p-4">
-          <v-btn :to="`/slides/realm/${level.realm}/level/${level.level}`">{{level.level}}</v-btn>
+        <div class="d-flex flex-row flex-wrap">
+          <div v-for="level in realm" class="p-4">
+            <v-btn :to="`/slides/realm/${level.realm}/level/${level.level}`">{{level.level}}</v-btn>
+          </div>
+          <div class="p-4">
+            <v-btn class="custom-shadow">{{realm.length + 1}}</v-btn>
+          </div>
         </div>
-        <div class="p-4 custom-shadow">{{realm.length}}</div>
       </div>
     </div>
   </div>
@@ -67,5 +71,9 @@ export default {
       background: url("/img/background2.png") no-repeat;
       background-size: 100% 100%;
     }
+  }
+
+  .custom-shadow {
+    box-shadow: cyan 0 0 30px 15px;
   }
 </style>
