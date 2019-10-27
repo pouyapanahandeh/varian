@@ -8,7 +8,8 @@ export default new Vuex.Store({
     levels: [],
     playerLevel: 1,
     playerScore: 1,
-    playerName: ""
+    playerName: "",
+    playerGender: ''
   },
   mutations: {
     SET_LEVELS: function (state, levels) {
@@ -19,6 +20,10 @@ export default new Vuex.Store({
     },
     INC_LEVEL: function (state) {
       state.playerLevel++;
+    },
+    SET_PLAYER: function (state, player) {
+      state.playerName = player.name;
+      state.playerGender = player.gender;
     }
   },
   actions: {
@@ -31,6 +36,9 @@ export default new Vuex.Store({
     parseLevels: async function({commit}) {
       const JSONLevels = require('../assets/levels');
       commit('SET_LEVELS', JSONLevels);
+    },
+    setPlayer: function({commit}, payload) {
+      commit('SET_PLAYER', payload)
     }
   },
   getters: {
@@ -45,6 +53,8 @@ export default new Vuex.Store({
     getWordList: (state) => (realmId, levelId) => {
       const level = state.levels.find(level => +level.realm === +realmId && +level.level === +levelId);
       return level ? level.wordlist : [];
-    }
+    },
+    getName: state => state.playerName,
+    getGender: state => state.playerGender
   }
 })

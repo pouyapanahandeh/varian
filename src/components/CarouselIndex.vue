@@ -21,12 +21,25 @@
             align="center"
             justify="center"
         >
-          <div class="text-center display-2">
+          <div class="text-center display-1">
             {{message.text}}
-            <div v-if="messages.length - 1 === i">
-              <v-text-field v-model="playerName" label="Your hero name!" solo-inverted class="mt-6 ml-4 mr-4 text--white"></v-text-field>
-              <v-btn class="pr-8 pl-8" outlined>PLAY!</v-btn>
+            <img v-if="message.image" :src="`/img/${message.image}`" alt="ImageView" height="600px">
+            <div v-if="i === 0">
+              <v-text-field v-model="playerName" label="Your hero name!" solo-inverted
+                            class="mt-6 ml-4 mr-4 text--white"></v-text-field>
+
+              <p>You are?</p>
+              <div class="d-flex justify-content-center">
+                <v-radio-group v-model="playerGender" row>
+                  <v-radio label="Boy" value="boy"></v-radio>
+                  <v-radio label="Girl" value="girl"></v-radio>
+                </v-radio-group>
+              </div>
+
+              <v-btn @click.stop.prevent="playerName && playerGender && ++currentSlide && setPlayer()" outlined>GO!
+              </v-btn>
             </div>
+            <v-btn v-if="i === messages.length - 1" class="pr-8 pl-8" outlined>PLAY!</v-btn>
           </div>
         </v-row>
       </v-sheet>
@@ -35,24 +48,62 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
 	name: 'CarouselIndex',
+	computed: {
+		...mapGetters(['getName', 'getGender'])
+	},
 	data: () => ({
 		messages: [
-			{ color: 'red', text: 'Hello there! Welcome to the Varian app!' },
-			{ color: 'green', text: 'Today, we\'re going to tell you a story.' },
-			{ color: 'orange', text: 'Once upon a time...' },
-			{ color: 'blue', text: 'Please enter your name:' },
+			{
+				"color": "#186782",
+				"text": ""
+			},
+			{
+				"color": "#186782",
+				"text": "Once upon a time, there was a xxxx called yyyy was not feeling well and doctor called Varian said that yyyy has tumor inside zzzz brain.\nTumor is a little group of unwanted monsters that harms yyyy’s brain."
+			},
+			{
+				"color": "orange",
+				"text": "yyyy decided to fight against this tumor and kill it with the help of zzzz doctor Varian.\nDoctor Varian took some pictures of yyyy’s brain to locate the tumor and put a plan in order to make it easy for yyyy to win zzzz battle against this tumor."
+			},
+			{
+				"color": "green",
+				"text": "During his mission, yyyy needed to get into a special machine designed by zzzz doctor to flight to the space for 25 days in order to find the monsters and destroy them."
+			},
+			{
+				"color": "yellow",
+				"image": "arrowed.png",
+				"text": ""
+			},
+			{
+				"color": "orange",
+				"text": "Each day yyyy had to fight against different monster by completing different challenges. \nSo yyyy, do you want to fight these monsters? \nStart the game "
+			}
 		],
-    currentSlide: 0,
-    playerName: ''
+		currentSlide: 0,
+		playerName: '',
+		playerGender: ''
 	}),
 	methods: {
 		goToNext: function () {
-			if (this.currentSlide < this.messages.length - 1)
-		    this.currentSlide++;
-		  else
-		    this.playerName && this.$router.push({name: 'menu'});
+			if (this.currentSlide > 0 && this.currentSlide < this.messages.length - 1) {
+				this.currentSlide++;
+			} else if (this.currentSlide === this.messages.length - 1) {
+				this.$router.push({ name: 'menu' });
+			}
+		},
+		setPlayer: function () {
+			this.$store.dispatch('setPlayer', { name: this.playerName, gender: this.playerGender });
+
+			this.messages = this.messages.map(msg => {
+				msg.text = msg.text.replace(/yyyy/gi, this.getName);
+				msg.text = msg.text.replace(/xxxx/gi, this.getGender);
+				msg.text = msg.text.replace(/zzzz/gi, this.getGender === 'boy' ? 'his' : 'her');
+				return msg;
+			});
 		}
 	}
 };
