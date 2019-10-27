@@ -6,8 +6,9 @@
       <p class="mb-0">Your score: {{ getScore }}</p>
     </div>
     <div class="d-flex flex-column justify-content-between">
-      <div v-for="(realm, i) in groupedLevels" class="realm" :class="[+i === 1 ? 'beginner' : 'advanced']">
-        <div class="display-1 w-100 text-center bg-white transp">Realm #{{i}}</div>
+      <div v-for="(realm, counter) in groupedLevels" class="realm" :class="[+counter === 1 ? 'beginner' : 'advanced', {'bg-white transp no-pointer': +counter === 3}]">}}
+
+        <div class="display-1 w-100 text-center bg-white transp">Realm #{{counter + (+counter === 3  ? ` (${timeLeft || ''})` : '')}}</div>
 
         <div class="d-flex flex-row flex-wrap">
           <div v-for="level in realm" class="p-4">
@@ -26,19 +27,26 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import moment from 'moment';
 
 export default {
 	name: 'Levels',
 	mounted: function () {
 		const levels = this.getLevels;
 		this.groupedLevels = this.groupByKey(levels, 'realm');
+    let time = moment().add(8,'hours');
+
+		setInterval(() => {
+			this.timeLeft = moment(time.diff(moment())).format('HH:MM:ss');
+    }, 1000);
 	},
 	computed: {
-		...mapGetters(['getLevels', 'getRank', 'getScore'])
+		...mapGetters(['getLevels', 'getRank', 'getScore']),
 	},
 	data: function () {
 		return {
-			groupedLevels: []
+			groupedLevels: [],
+      timeLeft: null
 		};
 	},
 	methods: {
@@ -50,7 +58,8 @@ export default {
 
 				return groupedObj;
 			}, {});
-		}
+		},
+
 	}
 
 };
@@ -58,10 +67,6 @@ export default {
 
 <style lang="scss" scoped>
   .realm {
-    .transp {
-      opacity: 0.6;
-    }
-
     &.beginner {
       background: url("/img/background.jpg") no-repeat;
       background-size: 100% 100%;
@@ -73,7 +78,15 @@ export default {
     }
   }
 
+  .transp {
+    opacity: 0.6;
+  }
+
   .custom-shadow {
     box-shadow: cyan 0 0 30px 15px;
+  }
+
+  .no-pointer {
+    pointer-events: none;
   }
 </style>
