@@ -86,59 +86,5 @@
       "machine",
       "flash"
     ]
-  },
-  {
-    "level": "1",
-    "realm": "3",
-    "type": "word",
-    "slides": [
-      {
-        "color": "green",
-        "text": "The mission peter in is called radiotherapy, so what is radiotherapy? \n It is an invisible medicine that attacks the tumor and make it disappear. \n The space machine peter using to kill the tumor called radiotherapy machine. This machine will use controlled doses of invisible, high energy beams to target the tumor and destroy it."
-      },
-      {
-        "color": "blue",
-        "text": "Peter need to get on the machine and stay calm without moving in order to succeed his mission. \n Peter has to come each day for 25 days to complete his challenges and do the treatment in order to complete the mission."
-      },
-      {
-        "color": "blue",
-        "text": "Good News! Doctor Varian is working a new kind of space machine which is called Flash Therapy employs a much higher dose of radiation, but only for milliseconds, and in 1-3 sessions."
-      },
-      {
-        "color": "blue",
-        "text": "Is the radiotherapy painful? \n No it is not, it is painless process. \n How long it takes? \n It take few minutes."
-      }
-    ],
-    "wordlist": [
-      "machine",
-      "flash"
-    ]
-  },
-  {
-    "level": "2",
-    "realm": "3",
-    "type": "letter",
-    "slides": [
-      {
-        "color": "green",
-        "text": "The mission peter in is called radiotherapy, so what is radiotherapy? \n It is an invisible medicine that attacks the tumor and make it disappear. \n The space machine peter using to kill the tumor called radiotherapy machine. This machine will use controlled doses of invisible, high energy beams to target the tumor and destroy it."
-      },
-      {
-        "color": "blue",
-        "text": "Peter need to get on the machine and stay calm without moving in order to succeed his mission. \n Peter has to come each day for 25 days to complete his challenges and do the treatment in order to complete the mission."
-      },
-      {
-        "color": "blue",
-        "text": "Good News! Doctor Varian is working a new kind of space machine which is called Flash Therapy employs a much higher dose of radiation, but only for milliseconds, and in 1-3 sessions."
-      },
-      {
-        "color": "blue",
-        "text": "Is the radiotherapy painful? \n No it is not, it is painless process. \n How long it takes? \n It take few minutes."
-      }
-    ],
-    "wordlist": [
-      "machine",
-      "flash"
-    ]
   }
 ]

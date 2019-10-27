@@ -17,7 +17,7 @@
           class="pl-4 pr-4"
       >
         <v-row
-            class="fill-height"
+            class="h-100 d-flex flex-column justify-content-center"
             align="center"
             justify="center"
         >

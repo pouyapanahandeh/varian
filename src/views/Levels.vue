@@ -8,14 +8,27 @@
     <div class="d-flex flex-column justify-content-between">
       <div v-for="(realm, counter) in groupedLevels" class="realm" :class="[+counter === 1 ? 'beginner' : 'advanced', {'bg-white transp no-pointer': +counter === 3}]">
 
-        <div class="display-1 w-100 text-center bg-white transp">Realm #{{counter + (+counter === 3  ? ` (${timeLeft || ''})` : '')}}</div>
+        <div class="display-1 w-100 text-center bg-white transp">Realm #{{counter + (+counter === 2  ? ` (${timeLeft || ''})` : '')}}</div>
 
         <div class="d-flex flex-row flex-wrap">
           <div v-for="level in realm" class="p-4">
             <v-btn :to="`/slides/realm/${level.realm}/level/${level.level}`">{{level.level}}</v-btn>
           </div>
           <div class="p-4">
-            <v-btn class="custom-shadow">{{realm.length + 1}}</v-btn>
+            <v-btn  @click.stop="dialog = true" class="custom-shadow">{{realm.length + 1}}</v-btn>
+
+            <v-dialog
+                v-model="dialog"
+                max-width="290"
+            >
+              <v-card>
+                <v-card-title class="headline">Next challenge!</v-card-title>
+
+                <v-card-text>
+                  Get ready to get into the machine: Be calm, don't move and enjoy :)
+                </v-card-text>
+              </v-card>
+            </v-dialog>
           </div>
         </div>
       </div>
@@ -46,7 +59,8 @@ export default {
 	data: function () {
 		return {
 			groupedLevels: [],
-      timeLeft: null
+      timeLeft: null,
+      dialog: false
 		};
 	},
 	methods: {

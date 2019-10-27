@@ -10,7 +10,6 @@
           <v-btn class="my-2" to="/index" block>New game</v-btn>
           <v-btn class="my-2" to="/slides/realm/2/level/1" block>Continue</v-btn>
           <v-btn class="my-2" :to="{name: 'levels'}" block>Levels</v-btn>
-          <v-btn class="my-2" block>Unlocked</v-btn>
         </v-col>
       </v-row>
     </v-container>
