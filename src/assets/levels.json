@@ -40,9 +40,6 @@
       }
     ],
     "wordlist": [
-      "tumor",
-      "cells",
-      "brain",
       "ill"
     ]
   },
@@ -74,7 +71,7 @@
     ]
   },
   {
-    "level": "1",
+    "level": "2",
     "realm": "2",
     "type": "word",
     "slides": [

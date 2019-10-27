@@ -1,10 +1,6 @@
 <template>
   <div class="h-100">
     <div class="display-3 w-100 text-center bg-primary pt-3 pb-3 text-light">Levels</div>
-    <div class="bg-success text-light p-4 d-flex flex-row justify-content-around">
-      <p class="mb-0">Your rank: {{ getRank }}</p>
-      <p class="mb-0">Your score: {{ getScore }}</p>
-    </div>
     <div class="d-flex flex-column justify-content-between">
       <div v-for="(realm, counter) in groupedLevels" class="realm" :class="[+counter === 1 ? 'beginner' : 'advanced', {'bg-white transp no-pointer': +counter === 3}]">
 
