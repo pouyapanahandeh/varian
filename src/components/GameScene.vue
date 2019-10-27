@@ -1,12 +1,11 @@
 <template>
   <div id="varriar-scene-ctx">
     <div id="frontier" class="frontier">
-      <div id="player" class="actor player">
-        <p id="actor-hp" class="hp">100</p>
+      <div id="player" class="actor player pt-4">
         <img class="sprite" src="/img/radioboy.png" alt="radioboy"/>
       </div>
       <div id="enemie" class="actor enemie">
-        <p id="enemie-hp" class="hp">256</p>
+        <p id="enemie-hp" class="hp">{{ monsterHP }}</p>
         <img class="sprite" src="/img/pizduk.png" alt="pizdushan"/>
       </div>
     </div>
@@ -16,20 +15,42 @@
 <script>
 export default {
 	name: 'GameScene',
+	props: {
+		gameEvent: {
+			type: String,
+			required: true
+		}
+	},
 	mounted: function () {
-		$('.sprite').on('click', function () {
+    this.monsterHP = 200;
+    this.damageAmount = this.monsterHP / 2;
+	},
+  data: function () {
+		return {
+			monsterHP: 0,
+      damageAmount: 0
+    }
+  },
+	watch: {
+		gameEvent: function (newValue) {
+			switch (newValue) {
+				case "playerGuessed":
+					this.dealDamage();
+					break;
+				case "playerMissed":
+					// this.removePoints();
+					break;
+			}
+		}
+	},
+	methods: {
+		dealDamage: function () {
+			const monster = $('#enemie')[0];
+			this.monsterHP -= this.damageAmount;
 
-			let hp = parseInt($(this).parent().find('.hp').html());
-			hp -= 10;
-			$(this).parent().find('.hp').html(hp);
-
-			this.style.animation = 'take-damage 2s';
-			let self = this;
-			setTimeout(function () {
-
-				self.style.animation = '';
-			}, 2000);
-		});
+			monster.style.animation = 'take-damage 2s';
+			setTimeout(() => monster.style.animation = '', 2000);
+		}
 	}
 };
 </script>

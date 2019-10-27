@@ -67,13 +67,6 @@ export default {
 		};
 	},
 	methods: {
-		lose: function () {
-			this.endMsgs.title = `You lost! The word was ${this.pickedWordLetters.join('')}!`;
-			this.endMsgs.text = `Mission failed, we'll get them next time...`;
-			this.playSound('lose');
-			this.showMsg();
-			this.isGameOver = true;
-		},
 		win: function () {
 			this.endMsgs.title = `Ayy congratulations it's a celebration!`;
 			this.endMsgs.text = `Pls don't ban!`;
@@ -116,18 +109,14 @@ export default {
 					if (indecesOfGuessed.length) {
 						this.indecesOfLettersGuessed.push(...indecesOfGuessed);
 						this.playSound('good');
+						this.$emit('updateEvent', 'playerGuessed');
 
 						if (this.indecesOfLettersGuessed.length === this.pickedWordLetters.length)
 							this.win();
 
 					} else {
 						this.wrongGuesses.push(this.inputLetter);
-
-						if (this.wrongGuesses.length === 10) {
-							this.lose();
-						} else {
-							this.playSound('bad');
-						}
+    			  this.playSound('bad');
 					}
 				}
 			}

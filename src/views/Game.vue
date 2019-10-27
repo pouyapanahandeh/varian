@@ -1,9 +1,9 @@
 <template>
   <div v-if="getTypeForLevel(this.realmNumber, this.levelNumber)">
-    <GameScene></GameScene>
+    <GameScene :game-event="gameEvent"></GameScene>
 
-    <WordGame v-if="getTypeForLevel(this.realmNumber, this.levelNumber) === 'word'"></WordGame>
-    <LetterGame v-else-if="getTypeForLevel(this.realmNumber, this.levelNumber) === 'letter'"></LetterGame>
+    <WordGame @updateEvent="updateEvent" v-if="getTypeForLevel(this.realmNumber, this.levelNumber) === 'word'"></WordGame>
+    <LetterGame @updateEvent="updateEvent" v-else-if="getTypeForLevel(this.realmNumber, this.levelNumber) === 'letter'"></LetterGame>
   </div>
 </template>
 
@@ -27,7 +27,8 @@ export default {
 		return {
 			realmNumber: '',
 			letterNumber: '',
-			type: ''
+			type: '',
+      gameEvent: ''
 		};
 	},
 	watch: {
@@ -39,6 +40,10 @@ export default {
 		}
 	},
 	methods: {
+		updateEvent: function (eventTypePayload) {
+			this.gameEvent = eventTypePayload;
+			setTimeout(() => this.gameEvent = '', 200)
+    },
 		setIds: function (realmId, levelId) {
 			this.realmNumber = realmId;
 			this.levelNumber = levelId;
