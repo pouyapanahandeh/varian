@@ -1,12 +1,13 @@
 <template>
   <v-carousel
-      :show-arrows="true"
+      :show-arrows="false"
       height="100%"
       v-model="currentSlide"
   >
     <v-carousel-item
         v-for="(slide, i) in slides"
         :key="i"
+        @click.stop="goToNext()"
     >
       <v-sheet
           :color="slide.color"
@@ -19,10 +20,11 @@
             align="center"
             justify="center"
         >
-          <div class="text-center display-2">
-            {{slide.text}}
+          <div class="text-center slide-font-size pa-4 cloud">
+            <img v-if="slide.image" :src="`/img/${slide.image}`" alt="ImageView" width="100%">
+            <div class="break">{{slide.text}}</div>
             <div v-if="slides.length - 1 === i">
-              <v-btn class="pr-8 pl-8" outlined>Start Level!</v-btn>
+              <v-btn class="pr-8 pl-8 mt-6" outlined>Start Level!</v-btn>
             </div>
           </div>
         </v-row>
@@ -48,10 +50,21 @@ export default {
 		return {
 			currentSlide: 0
     }
+  },
+  methods: {
+		goToNext: function () {
+			(this.currentSlide < this.slides.length - 1) && this.currentSlide++;
+    }
   }
 };
 </script>
 
 <style scoped>
+  .break {
+    white-space: pre-line;
+  }
 
+  .slide-font-size {
+    font-size: 1.9rem;
+  }
 </style>

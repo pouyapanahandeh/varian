@@ -5,17 +5,28 @@
     "type": "letter",
     "slides": [
       {
-        "color": "red",
-        "text": "realm1 level1 slide1"
+        "color": "#186782",
+        "text": "The monsters, peter is fighting against are parts of the tumor. \n So, what is this tumor?"
       },
       {
-        "color": "blue",
-        "text": "realm1 level1 slide2"
+        "color": "orange",
+        "text": "Body and brain are made up of billions of building blocks are called cells, but sometimes they get ill and start to grow when they should not. They can then make a lump, and this is called a tumor. "
       },
       {
         "color": "green",
-        "text": "realm1 level1 slide3"
+        "text": "When the lump of cells is in your head it’s called a brain tumor.\n Why do cells get ill? \n No one knows. \n Do you do something wrong to get tumor? \n No, it is not your fault at all. "
+      },
+      {
+        "color": "orange",
+        "text": "Can it be destroyed and go away? \n Absolutely, yes. \n How? \n You will know after you finish your challenges."
       }
+    ],
+    "wordlist": [
+      "tumor",
+      "cells",
+      "brain",
+      "ill",
+      "monster"
     ]
   },
   {
@@ -24,17 +35,28 @@
     "type": "word",
     "slides": [
       {
-        "color": "red",
-        "text": "realm2 level1 slide1"
+        "color": "green",
+        "text": "The mission peter in is called radiotherapy, so what is radiotherapy? \n It is an invisible medicine that attacks the tumor and make it disappear. \n The space machine peter using to kill the tumor called radiotherapy machine. This machine will use controlled doses of invisible, high energy beams to target the tumor and destroy it."
       },
       {
         "color": "blue",
-        "text": "realm2 level1 slide2"
+        "text": "Peter need to get on the machine and stay calm without moving in order to succeed his mission. \n Peter has to come each day for 25 days to complete his challenges and do the treatment in order to complete the mission."
       },
       {
-        "color": "green",
-        "text": "realm2 level1 slide3"
+        "color": "blue",
+        "text": "Good News! Doctor Varian is working a new kind of space machine which is called Flash Therapy employs a much higher dose of radiation, but only for milliseconds, and in 1-3 sessions."
+      },
+      {
+        "color": "blue",
+        "text": "Is the radiotherapy painful? \n No it is not, it is painless process. \n How long it takes? \n It take few minutes."
       }
+    ],
+    "wordlist": [
+      "flash",
+      "machine",
+      "treatment",
+      "therapy",
+      "medicine"
     ]
   }
 ]
