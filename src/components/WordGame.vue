@@ -1,10 +1,15 @@
 <template>
-  <div>WORD GAME</div>
+  <div>
+    <Helper/>
+  </div>
 </template>
 
 <script>
+import Helper from './Helper';
+
 export default {
-	name: "WordGame"
+	name: "WordGame",
+	components: { Helper }
 };
 </script>
 

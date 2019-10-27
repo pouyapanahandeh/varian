@@ -32,7 +32,7 @@
   },
   {
     "level": "2",
-    "realm": "2",
+    "realm": "1",
     "type": "letter",
     "slides": [
       {
@@ -47,6 +47,21 @@
     "wordlist": [
       "hello",
       "bye"
+    ]
+  },
+  {
+    "level": "1",
+    "realm": "2",
+    "type": "word",
+    "slides": [
+      {
+        "color": "green",
+        "text": "kekeke"
+      },
+      {
+        "color": "blue",
+        "text": "kekeke2"
+      }
     ]
   }
 ]

@@ -25,7 +25,7 @@
             {{message.text}}
             <div v-if="messages.length - 1 === i">
               <v-text-field v-model="playerName" label="Your hero name!" solo-inverted class="mt-6 ml-4 mr-4 text--white"></v-text-field>
-              <v-btn :to="{name: 'menu'}" class="pr-8 pl-8" outlined>PLAY!</v-btn>
+              <v-btn class="pr-8 pl-8" outlined>PLAY!</v-btn>
             </div>
           </div>
         </v-row>
