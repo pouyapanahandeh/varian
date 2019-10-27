@@ -39,7 +39,7 @@
               <v-btn @click.stop.prevent="playerName && playerGender && ++currentSlide && setPlayer()" outlined>GO!
               </v-btn>
             </div>
-            <v-btn v-if="i === message.length - 1" class="pr-8 pl-8" outlined>PLAY!</v-btn>
+            <v-btn v-if="i === messages.length - 1" class="pr-8 pl-8" outlined>PLAY!</v-btn>
           </div>
         </v-row>
       </v-sheet>
