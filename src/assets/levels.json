@@ -45,8 +45,11 @@
       }
     ],
     "wordlist": [
-      "hello",
-      "bye"
+      "tumor",
+      "cells",
+      "brain",
+      "ill",
+      "monster"
     ]
   },
   {
@@ -62,6 +65,10 @@
         "color": "blue",
         "text": "kekeke2"
       }
+    ],
+    "wordlist": [
+      "Word1",
+      "word2"
     ]
   }
 ]
